@@ -35,15 +35,14 @@ for newer/specialized AI roles in India's market. The forecasting model uses the
 ## Methodology
 
 1. **Forecasting** — a pooled lag-regression model (role as a categorical
-   feature + lag-1, lag-2, 3-month rolling average), validated with a proper
-   walk-forward split. Achieved **2.17% MAPE**. Prophet was tested and rejected:
+   feature + lag-1, lag-2, 3-month rolling average), validated on a chronological holdout (the last 2 months of each role held out, never a random split). Achieved **2.17% MAPE**. Prophet was tested and rejected:
    with only 12 months of data, its "yearly seasonality" component swung
    ±Rs 3-4 crore — over 30x the entire real salary range — clear evidence it
    was fitting noise, not a real pattern.
 
 2. **Causal analysis** — tested whether a real, reported event (a June 2026
-   industry report of a 28-month low in Indian tech hiring, with TCS/Infosys/
-   Wipro adding near-zero net headcount) actually shifted Python Developer
+   industry report of a 28-month low in Indian tech hiring, with TCS/Infosys/Wipro 
+   adding near-zero net headcount) actually shifted Python Developer
    salaries, using a synthetic control built from Business Analyst + Data
    Analyst (fit on pre-event data only). Found a real divergence 2 months
    post-event (+Rs 45,602 and +Rs 57,829 — 7-8x the normal noise band),
@@ -61,9 +60,9 @@ for newer/specialized AI roles in India's market. The forecasting model uses the
 
 ## Honest limitations
 
-- 12 months of data is thin for any time-series method; the walk-forward
-  validation and the Prophet stress-test are both there specifically to avoid
-  overclaiming on limited data.
+- 12 months of data is thin for any time-series method; the chronological
+   holdout and the Prophet stress-test are both there to avoid overclaiming. 
+   The test set is only 6 rows (2 months × 3 roles), so the 2.17% MAPE is directional, not precise.
 - The causal analysis uses one treated series against a 2-series control over
   a short window — suggestive evidence, not definitive proof.
 - The ROI calculator is a cited scenario model, not measured company data —
