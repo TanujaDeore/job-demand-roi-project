@@ -5,7 +5,7 @@ data, tests whether a real market event actually caused a measurable shift using
 causal inference, and translates the finding into an estimated business value —
 not just "here's a model," but "here's what the model is worth."
 
-**Live demo:** https://job-demand-roi-project-yac2awztd4vgftjbyms6pk.streamlit.app/
+**Live demo:** https://job-demand-roi-project.streamlit.app/
 
 ## Problem
 
