@@ -18,11 +18,14 @@ st.title("Job Market Demand Forecasting + ROI")
 st.caption("Real data pulled from Adzuna's live API -- India tech/data roles")
 
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(BASE_DIR, "..", "data", "raw")
+
 @st.cache_data
 def load_data():
-    trend = pd.read_csv("../data/raw/adzuna_india_job_trends.csv")
+    trend = pd.read_csv(os.path.join(DATA_DIR, "adzuna_india_job_trends.csv"))
     trend["month"] = pd.to_datetime(trend["month"])
-    snap = pd.read_csv("../data/raw/adzuna_india_current_vacancies.csv")
+    snap = pd.read_csv(os.path.join(DATA_DIR, "adzuna_india_current_vacancies.csv"))
     return trend, snap
 
 
